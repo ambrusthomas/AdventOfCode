@@ -8,10 +8,10 @@ def part1():
 
 def part2():
     index = -1
-    gotFrequences = []
+    gotFrequences = set()
     currentFreq = 0
     while currentFreq not in gotFrequences:
-        gotFrequences.append(currentFreq)
+        gotFrequences.add(currentFreq)
         index = [index + 1, 0][index == len(input) - 1]
         currentFreq += input[index]
     print(currentFreq)
