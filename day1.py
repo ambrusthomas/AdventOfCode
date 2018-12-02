@@ -1,6 +1,6 @@
 from aocd import get_data
 
-data = get_data(day = 1)
+data = get_data(day = 1, year = 2018)
 input = list(map(int, data.splitlines()))
 
 def part1():
