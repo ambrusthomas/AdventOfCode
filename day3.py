@@ -1,7 +1,4 @@
-from aocd import get_data
-
-data = get_data(day = 3, year = 2018)
-input = data.splitlines()
+input = open("3.in", 'r').read().splitlines()
 takenSquares = {}
 
 def part1():

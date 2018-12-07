@@ -1,7 +1,5 @@
-from aocd import get_data
-
-data = get_data(day = 1, year = 2018)
-input = list(map(int, data.splitlines()))
+raw_input = open("1.in", 'r').read().splitlines()
+input = list(map(int, raw_input))
 
 def part1():
     print(sum(input))

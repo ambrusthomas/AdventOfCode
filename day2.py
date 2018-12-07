@@ -1,8 +1,6 @@
-from aocd import get_data
 from collections import Counter
 
-data = get_data(day = 2, year = 2018)
-input = data.splitlines()
+input = open("2.in", 'r').read().splitlines()
 
 def hasLetterOccurrence(x, num):
     return num in list(Counter(x).values())

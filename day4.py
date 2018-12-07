@@ -1,7 +1,5 @@
-from aocd import get_data
-
-data = get_data(day = 4, year = 2018)
-input = sorted(data.splitlines())
+input = open("4.in", 'r').read().splitlines()
+input = sorted(input)
 
 guards_info = dict(dict())
 guards_asleep_time = {}

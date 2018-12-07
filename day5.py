@@ -1,9 +1,8 @@
-from aocd import get_data
 import operator
 
-data = get_data(day = 5, year = 2018)
+raw_input = open("5.in", 'r').read()
 
-def part1(input = data):
+def part1(input = raw_input):
     while True:
         for a,b in zip(input, input[1:]):
             if a.upper() == b.upper() and a != b:
@@ -14,8 +13,8 @@ def part1(input = data):
 
 def part2():
     result = {}
-    for c in set(data.lower()):
-        input = data.replace(c, "").replace(c.upper(), "")
+    for c in set(raw_input.lower()):
+        input = raw_input.replace(c, "").replace(c.upper(), "")
         result[c] = part1(input)
     print(sorted(result.items(), key = operator.itemgetter(1))[0])
 

@@ -1,8 +1,6 @@
-from aocd import get_data
-
-data = get_data(day = 6, year = 2018)
+raw_input = open("6.in", 'r').read().splitlines()
 input = []
-for l in data.splitlines():
+for l in raw_input:
     a,b = l.split(", ")
     a = int(a)
     b = int(b)

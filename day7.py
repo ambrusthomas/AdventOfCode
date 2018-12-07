@@ -1,7 +1,4 @@
-from aocd import get_data
-
-data = get_data(day = 7, year = 2018)
-input = data.splitlines()
+input = open("7.in", 'r').read().splitlines()
 
 pres = {}
 letters = set()
