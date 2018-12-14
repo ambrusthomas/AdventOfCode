@@ -12,18 +12,18 @@ def power(x, y):
 
 def calc(r):
     g = numpy.zeros((300, 300), dtype = numpy.int32)
-    for i in range(300):
-        for j in range(300):
-            g[i][j] = power(i, j)
+    for i in range(1, 301):
+        for j in range(1, 301):
+            g[i-1][j-1] = power(i, j)
     m = 0
     maximums = {}
     for a in r:
-        for i in range(300 - a):
-            for j in range(300 - a):
+        for i in range(1, 301 - a):
+            for j in range(1, 301 - a):
                 s = 0
                 for x in range(a):
                     for y in range(a):
-                        s += g[i+x][j+y]
+                        s += g[i-1+x][j-1+y]
                 if m < s:
                     m = s
                     maximums[m] = (i, j, a)
