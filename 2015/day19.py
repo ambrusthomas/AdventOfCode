@@ -4,14 +4,6 @@ from collections import defaultdict
 with open('19.in', 'r') as f:
     raw_input = f.read()
 
-# raw_input = """e => H
-# e => O
-# H => HO
-# H => OH
-# O => HH
-
-# HOHOHO"""
-
 TASK_REGEX = '(\\w+) => (\\w+)'
 
 rules = defaultdict(set)
@@ -52,20 +44,40 @@ def normalize_chomsky(rules):
                     temp_num += 1
     return rs
 
+def search_for_rules(right_side):
+    found = set()
+    for l, r in rules.items():
+        if right_side in r:
+            found.add(l)
+    return found
+
 def part2():
     global rules
-
     rules = normalize_chomsky(rules)
 
     parts = findall('[A-Z][^A-Z]*', medicine_molecule)
-    Xs = { (i+1, i+1) : parts[i] for i in range(len(parts))}
 
-    parts = [1,1,1,1,1]
+    Xs = defaultdict(set)
+    for i in range(len(parts)):
+        Xs[(i+1, i+1)].add(parts[i])
+
+    Ys = defaultdict(set)
+    for i in range(len(parts)):
+        Ys[(i+1, i+1)].add(0)
+
     for subword_length in range(2, len(parts) + 1):
         for start in range(1, len(parts) + 1 - subword_length + 1):
-            print("when calculating X" + str((start, start + subword_length - 1)) + ":")
+            currently_calculated = (start, start + subword_length - 1)
             for left_side in range(subword_length - 1):
-                print(subword_length, "-", ((start, start + left_side), (start + left_side + 1, start + subword_length - 1)))
+                pyramid_left_element = (start, start + left_side)
+                pyramid_right_element = (start + left_side + 1, start + subword_length - 1)
+                for a in Xs[pyramid_left_element]:
+                    for b in Xs[pyramid_right_element]:
+                        for r in search_for_rules(a + b):
+                            Xs[currently_calculated].add(r)
+                            Ys[currently_calculated].add(min(Ys[pyramid_left_element]) + min(Ys[pyramid_right_element]) + [0, 1]['Tmp' not in r])
+
+    print(min(Ys[(1, len(parts))]))
 
 part1()
 part2()
