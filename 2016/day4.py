@@ -1,6 +1,5 @@
 from re import search
 from collections import Counter
-from itertools import repeat, chain
 
 with open('4.in', 'r') as f:
     raw_input = f.read()
