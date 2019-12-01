@@ -1,4 +1,4 @@
-raw_input = open("1.in", 'r').read().splitlines()
+raw_input = open("01.in", 'r').read().splitlines()
 input = list(map(int, raw_input))
 
 def calcFuel(massOrFuel):

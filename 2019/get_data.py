@@ -9,6 +9,6 @@ if len(argv) == 2:
 else:
     day = datetime.today().day
 data = get_data(day = day, year = 2019)
-f = open(str(day) + ".in", 'w')
+f = open(f"{day:02d}" + ".in", 'w')
 f.write(data)
 f.close()
